@@ -1,0 +1,60 @@
+version: '3.8'
+services:
+  customer-support:
+    build:
+      context: .
+      dockerfile: services/customer_support_agent/Dockerfile
+    ports:
+      - "8001:8000"
+    environment:
+      - PYTHONPATH=/app
+    networks:
+      - app-network  
+
+  general:
+    build:
+      context: .
+      dockerfile: services/general_agent/Dockerfile
+    ports:
+      - "8002:8000"
+    environment:
+      - PYTHONPATH=/app
+    networks:
+      - app-network  
+
+  knowledge:
+    build:
+      context: .
+      dockerfile: services/knowledge_agent/Dockerfile
+    ports:
+      - "8003:8000"
+    environment:
+      - PYTHONPATH=/app    
+    networks:
+      - app-network      
+
+  personality:
+    build:
+      context: .
+      dockerfile: services/personality_layer/Dockerfile
+    ports:
+      - "8004:8000"
+    environment:
+      - PYTHONPATH=/app
+    networks:
+      - app-network  
+
+  router:
+    build:
+      context: .
+      dockerfile: services/router_agent/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app 
+    networks:
+      - app-network     
+
+networks:
+  app-network:
+    driver: bridge
