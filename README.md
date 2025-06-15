@@ -36,7 +36,7 @@ The architecture of the Agent Swarm consists of the following main agents and co
 - **General Agent**: Handles general-purpose queries and uses tools for specific needs like news and suspicious activities.
 - **Personality Layer**: Enhances the response to be more user-friendly and empathetic.
 
-![Agent Swarm Architecture](./images/agent-swarm-architecture.png)
+<img src="./images/agent-swarm-architecture.png" alt="Agent Swarm Architecture" width="60%" height="50%"/>
 
 ---
 
@@ -268,7 +268,7 @@ The Agent Swarm is deployed on **AWS** using a containerized architecture with t
 - **Container Management**: ECS handles deployment and health monitoring
 - **Cost Optimization**: Pay only for resources actually used
 
-![Agent Swarm Deployment Architecture](./images/deployment-architecture.png)
+<img src="./images/deployment-architecture.png" alt="Agent Swarm Deployment Architecture" width="70%" height="50%"/>
 
 ---
 
