@@ -104,8 +104,8 @@ This process ensures that the **Knowledge Agent** provides accurate and contextu
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/Ankur1911/Agent-Swarm.git
-    cd Agent-Swarm
+    git clone https://github.com/Ankur1911/Agent-Swarm-Microservice.git
+    cd Agent-Swarm-Microservice
     ```
 
 2. **Install dependencies**:
