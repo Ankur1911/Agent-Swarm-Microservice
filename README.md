@@ -200,7 +200,10 @@ This process ensures that the **Knowledge Agent** provides accurate and contextu
 ---
 
 ## Testing
-#### Here are some [Test cases](test-cases.md)
+
+Here are some test cases to check the functionality:
+
+![Test Case Icon](https://img.shields.io/badge/Test%20Cases-Important-brightgreen) **[Test Cases Link](test-cases.md)**
 
 1. **Unit Tests**: Ensure the correct functioning of individual agents (KnowledgeAgent, CustomerSupportAgent, GeneralAgent).
 2. **Integration Tests**: Test the interaction between agents (e.g., RouterAgent routing to the correct agent).
@@ -278,7 +281,19 @@ The Agent Swarm is deployed on **AWS** using a containerized architecture with t
 ## Conclusion
 
 This Agent Swarm is designed to effectively route queries to the appropriate agent based on their content. Each agent is specialized to handle different types of requests, from product-related queries to customer support and general inquiries. The system uses a variety of tools to enrich responses and ensure smooth user interaction.
+### You can test it at :
+```
+http://agent-swarm-frontend1.s3-website-us-east-1.amazonaws.com/
+```
+### Example Question :
+<p align="center">
+<img src="./images/question.png" alt="Question" width="70%" height="50%"/>
+</p>
 
-For further development, consider enhancing the news-fetching capabilities, improving the suspicious query detection system, and adding more tools for a seamless user experience.
+### Response :
+<div style="display: flex; justify-content: space-between; align-items: flex-start;">
+  <img src="./images/response.png" alt="Response" width="45%" height="500px"/>
+  <img src="./images/flow.png" alt="Agent Workflow" width="45%" height="500px"/>
+</div>
 
 ---
