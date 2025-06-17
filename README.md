@@ -16,7 +16,8 @@
 6. [Testing](#testing)
 7. [Dockerization](#dockerization)
 8. [Deployment](#deployment)
-9. [Conclusion](#conclusion)
+9. [Framework Choice and Design Decisions](#framework-choice-and-design-decisions)
+10. [Conclusion](#conclusion)
 
 ---
 
@@ -277,6 +278,38 @@ The Agent Swarm is deployed on **AWS** using a containerized architecture with t
 <img src="./images/deployment-architecture.png" alt="Agent Swarm Deployment Architecture" width="70%" height="50%"/>
 </p>
 ---
+
+## Framework Choice and Design Decisions
+
+### **1. Why I Haven't Used LangChain and LangGraph Directly**
+Although I am familiar with **LangChain** and **LangGraph**, I chose to build the Agent Swarm manually to better understand the underlying mechanics of agent communication, state management, and routing. This decision allowed me to:
+- Gain hands-on experience with the **core principles** behind multi-agent systems.
+- Customize the architecture in a way that fits my design preferences.
+- Dive deeper into **agent orchestration**, error handling, and **workflow management**.
+
+However, I am well-versed in how **LangChain** and **LangGraph** can streamline the development process, and I understand how they abstract the complexities of agent routing and state management. If I were to scale or refactor this system in the future, I would likely leverage **LangChain** to manage the agent tools and **LangGraph** for the state flow and transitions.
+
+### **2. Manual Implementation Inspired by LangChain's Features**
+- **Routing and Agent Communication**:
+   - The **Router Agent** was built manually to handle the task of routing user queries to specialized agents. While **LangChain** provides an easy way to set up such agents and routing with its agent framework, I implemented the logic from scratch to gain a better understanding of how messages are passed between agents and how workflows are managed.
+   - In future implementations, **LangGraph** would be used to map out the state transitions and ensure proper management of workflows between agents (such as Router, Knowledge, and Customer Support agents).
+
+- **Knowledge Agent with RAG (Retrieval Augmented Generation)**:
+   - The **Knowledge Agent** uses a **RAG pipeline**, which is a common practice in **LangChain** for handling knowledge-based queries.
+   - I manually integrated the **FAISS vector store** for storing the embeddings of scraped data from **InfinitePay's website**, similar to how **LangChain** integrates vector stores.
+   - **Web search tools** like **DuckDuckGo** were implemented manually to provide fallback for cases where the knowledge base does not have enough relevant information.
+
+### **3. Lessons Learned from LangChain and LangGraph**:
+While building the system manually, I took inspiration from LangChain’s structure, such as:
+- **Agent Execution**: LangChain provides a clean structure for chaining agents. I mimicked this agent workflow by ensuring that after the **Router Agent** makes its decision, the right specialized agent handles the query.
+- **Tool Integration**: I understood the ease with which **LangChain** integrates external tools, like web searches, database queries, and email notifications. I manually handled these tools and integrated them into each agent’s workflow.
+
+### **4. Future Improvements with LangChain and LangGraph**
+If I were to refactor or expand this project, I would:
+- **LangChain**: Leverage its built-in **agents** and **tools** for managing specialized tasks like **RAG** (knowledge generation), **duckduckgo_search**, and **email** for customer support.
+- **LangGraph**: Utilize its state management and event-driven architecture to build a more scalable system where each agent seamlessly transitions through different states, ensuring optimal resource utilization.
+- **Personalized Responses**: **LangChain**'s **Personality Layer** feature would be useful to further fine-tune responses, which I implemented manually.
+
 
 ## Conclusion
 
