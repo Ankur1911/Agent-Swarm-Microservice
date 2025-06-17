@@ -299,12 +299,7 @@ However, I am well-versed in how **LangChain** and **LangGraph** can streamline 
    - I manually integrated the **FAISS vector store** for storing the embeddings of scraped data from **InfinitePay's website**, similar to how **LangChain** integrates vector stores.
    - **Web search tools** like **DuckDuckGo** were implemented manually to provide fallback for cases where the knowledge base does not have enough relevant information.
 
-### **3. Lessons Learned from LangChain and LangGraph**:
-While building the system manually, I took inspiration from LangChain’s structure, such as:
-- **Agent Execution**: LangChain provides a clean structure for chaining agents. I mimicked this agent workflow by ensuring that after the **Router Agent** makes its decision, the right specialized agent handles the query.
-- **Tool Integration**: I understood the ease with which **LangChain** integrates external tools, like web searches, database queries, and email notifications. I manually handled these tools and integrated them into each agent’s workflow.
-
-### **4. Future Improvements with LangChain and LangGraph**
+### **3. Future Improvements with LangChain and LangGraph**
 If I were to refactor or expand this project, I would:
 - **LangChain**: Leverage its built-in **agents** and **tools** for managing specialized tasks like **RAG** (knowledge generation), **duckduckgo_search**, and **email** for customer support.
 - **LangGraph**: Utilize its state management and event-driven architecture to build a more scalable system where each agent seamlessly transitions through different states, ensuring optimal resource utilization.
