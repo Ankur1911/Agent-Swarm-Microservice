@@ -281,7 +281,14 @@ The Agent Swarm is deployed on **AWS** using a containerized architecture with t
 
 ## Framework Choice and Design Decisions
 
-### **1. Why I Haven't Used LangChain and LangGraph Directly**
+### **1. Why I Chose to Use Manual Implementation Alongside LangChain and LangGraph**
+In the development of the **Agent Swarm** system, I decided to use a **hybrid approach**, combining **manual implementation** with the integration of **LangChain** and **LangGraph**. Here's the rationale behind this decision:
+
+- **Manual Implementation**: The core of the system was developed manually to understand the fundamentals of **multi-agent systems** and **agent communication**. This manual approach allowed me to customize the system according to specific needs and gain a deeper understanding of how each agent works.
+
+- **LangChain and LangGraph Reference**: To support users who may want to build similar systems using **LangChain** or **LangGraph**, I included a folder called **`langgraph`**. This folder contains a reference implementation that leverages both frameworks to build agent systems. Although these implementations work and can be used as an alternative, they may require further improvements, especially in terms of scalability and error handling.
+
+### **2. Why I Haven't Used LangChain and LangGraph Directly**
 Although I am familiar with **LangChain** and **LangGraph**, I chose to build the Agent Swarm manually to better understand the underlying mechanics of agent communication, state management, and routing. This decision allowed me to:
 - Gain hands-on experience with the **core principles** behind multi-agent systems.
 - Customize the architecture in a way that fits my design preferences.
@@ -289,22 +296,7 @@ Although I am familiar with **LangChain** and **LangGraph**, I chose to build th
 
 However, I am well-versed in how **LangChain** and **LangGraph** can streamline the development process, and I understand how they abstract the complexities of agent routing and state management. If I were to scale or refactor this system in the future, I would likely leverage **LangChain** to manage the agent tools and **LangGraph** for the state flow and transitions.
 
-### **2. Manual Implementation Inspired by LangChain's Features**
-- **Routing and Agent Communication**:
-   - The **Router Agent** was built manually to handle the task of routing user queries to specialized agents. While **LangChain** provides an easy way to set up such agents and routing with its agent framework, I implemented the logic from scratch to gain a better understanding of how messages are passed between agents and how workflows are managed.
-   - In future implementations, **LangGraph** would be used to map out the state transitions and ensure proper management of workflows between agents (such as Router, Knowledge, and Customer Support agents).
-
-- **Knowledge Agent with RAG (Retrieval Augmented Generation)**:
-   - The **Knowledge Agent** uses a **RAG pipeline**, which is a common practice in **LangChain** for handling knowledge-based queries.
-   - I manually integrated the **FAISS vector store** for storing the embeddings of scraped data from **InfinitePay's website**, similar to how **LangChain** integrates vector stores.
-   - **Web search tools** like **DuckDuckGo** were implemented manually to provide fallback for cases where the knowledge base does not have enough relevant information.
-
-### **3. Future Improvements with LangChain and LangGraph**
-If I were to refactor or expand this project, I would:
-- **LangChain**: Leverage its built-in **agents** and **tools** for managing specialized tasks like **RAG** (knowledge generation), **duckduckgo_search**, and **email** for customer support.
-- **LangGraph**: Utilize its state management and event-driven architecture to build a more scalable system where each agent seamlessly transitions through different states, ensuring optimal resource utilization.
-- **Personalized Responses**: **LangChain**'s **Personality Layer** feature would be useful to further fine-tune responses, which I implemented manually.
-
+---
 
 ## Conclusion
 
